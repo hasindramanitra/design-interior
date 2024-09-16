@@ -1,6 +1,8 @@
 
 import React from 'react'
 import Banner1 from '../assets/banner.png'
+import { motion } from 'framer-motion'
+import { SlideUp } from '../animation/animate'
 
 export default function Banner() {
     return (
@@ -9,16 +11,32 @@ export default function Banner() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                     {/* image section */}
                     <div className='flex flex-col justify-center'>
-                        <img src={Banner1} alt="" className='w-[95%] md:w-full mx-auto'/>
+                        <motion.img 
+                        initial={{ x: -100, opacity: 0}}
+                        animate={{ x: 0, opacity: 1}}
+                        transition={{ duration: 0.5, delay: 0.5}}
+                        src={Banner1} alt="" className='w-[95%] md:w-full mx-auto'/>
                     </div>
                     {/* text section */}
                     <div className='space-y-5 flex justify-center flex-col'>
-                        <h1 className='text-4xl font-bold font-serif'>We Believe that a team makes any project better</h1>
-                        <p className='text-gray-500 text-sm leading-7'>
+                        <motion.h1 
+                        variants={SlideUp(0.2)}
+                        initial="initial"
+                        animate="animate"
+                        className='text-4xl font-bold font-serif'>We Believe that a team makes any project better</motion.h1>
+                        <motion.p
+                            variants={SlideUp(0.4)}
+                            initial="initial"
+                            animate="animate"
+                         className='text-gray-500 text-sm leading-7'>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto sint dicta asperiores! Maxime accusamus, obcaecati, voluptatem aliquid{" "}
-                        </p>
+                        </motion.p>
                         <div>
-                            <button className='primary-btn'>Discover Now</button>
+                            <motion.button 
+                            variants={SlideUp(0.6)}
+                            initial="initial"
+                            animate="animate"
+                            className='primary-btn'>Discover Now</motion.button>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,6 @@
 import React from 'react'
+import { motion } from 'framer-motion';
+import { SlideLeft, SlideUp } from '../animation/animate';
 
 const TestimonialData = [
     {
@@ -32,8 +34,16 @@ export default function Testimonial() {
         <div className='py-14'>
             {/* header text */}
             <div className='space-y-4 text-center max-w-[550px] mx-auto mb-8'>
-                <h1 className='text-4xl font-bold font-serif'>Words from our customers</h1>
-                <p className='text-gray-500 text-sm max-w-[350px] mx-auto'>Bring your dream home to life with one-on-one design help & hand picked products</p>
+                <motion.h1 
+                variants={SlideUp(0.2)}
+                initial="initial"
+                animate="animate"
+                className='text-4xl font-bold font-serif'>Words from our customers</motion.h1>
+                <motion.p 
+                variants={SlideUp(0.4)}
+                initial="initial"
+                animate="animate"
+                className='text-gray-500 text-sm max-w-[350px] mx-auto'>Bring your dream home to life with one-on-one design help & hand picked products</motion.p>
             </div>
 
             {/* testimonial cards */}
@@ -41,7 +51,11 @@ export default function Testimonial() {
                 <div className='container grid grid-cols-1 md:grid-cols-3 gap-6'>
                     {
                         TestimonialData.map((card) => (
-                            <div key={card.id} className='border-[1px] border-gray-500 p-5 text-white group hover:bg-white duration-300'>
+                            <motion.div 
+                            variants={SlideLeft(card.delay)}
+                            initial="initial"
+                            animate="animate"
+                            key={card.id} className='border-[1px] border-gray-500 p-5 text-white group hover:bg-white duration-300'>
                                 {/* Upper section */}
                                 <div className='flex flex-row items-center gap-3'>
                                     <img src={card.img} alt="" className='w-[60px] rounded-full' />
@@ -55,7 +69,7 @@ export default function Testimonial() {
                                 <div className='mt-5 border-t-2 border-gray-500/40 pt-5'>
                                     <p className='text-gray-300 text-sm group-hover:text-black duration-300'>{card.text}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))
                     }
                 </div>

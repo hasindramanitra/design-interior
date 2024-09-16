@@ -1,6 +1,12 @@
 import React from 'react'
 import Logo from '../assets/logo.png'
 import { FaCopyright, FaPhone, FaVoicemail } from 'react-icons/fa'
+import { motion } from 'framer-motion'
+import { SlideUp } from '../animation/animate'
+
+
+
+
 export default function Footer() {
     return (
         <footer>
